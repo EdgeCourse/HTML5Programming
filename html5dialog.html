@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5 Dialog Example</title>
+    <style>
+        dialog {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="showDialog">Show Dialog</button>
+
+    <dialog id="myDialog">
+        <h2>This is a Dialog</h2>
+        <p>This is a simple example of an HTML5 dialog.</p>
+        <button id="closeDialog">Close</button>
+    </dialog>
+
+    <script>
+        const showDialogButton = document.getElementById('showDialog');
+        const myDialog = document.getElementById('myDialog');
+        const closeDialogButton = document.getElementById('closeDialog');
+
+        showDialogButton.addEventListener('click', () => {
+            myDialog.showModal();
+        });
+
+        closeDialogButton.addEventListener('click', () => {
+            myDialog.close();
+        });
+    </script>
+</body>
+</html>
