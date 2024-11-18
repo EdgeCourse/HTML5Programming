@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Framework Usage Comparison</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+  <script>
+
+    const data = {
+        labels: ['Angular', 'React', 'Vue', 'Svelte'],
+        datasets: [{
+          label: 'Framework Usage',
+          data: [30, 50, 20, 10],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)'
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)'
+          ],
+          borderWidth: 1
+        }]
+      };
+/*
+Chart.js charts are inherently interactive. Users can hover over data points to see tooltips with detailed information.
+*/
+      const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+  type: 'bar', // You can choose other types like 'pie', 'line', etc.
+  data: data,
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+  </script>
+</body>
+</html>
