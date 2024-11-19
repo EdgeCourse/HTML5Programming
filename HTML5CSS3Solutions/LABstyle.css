@@ -135,27 +135,3 @@ nav a:hover {
   background-color: #ddd;
 }
 
-
-/* Media Queries */
-@media (max-width: 768px) {
-    /* Adjust layout for smaller screens */
-    header, main, footer {
-      padding: 1rem;
-    }
-  
-    aside {
-      float: none;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-  
-  
-    nav ul {
-      flex-direction: column;
-    }
-  
-    nav li {
-      margin-bottom: 1rem;
-      margin-right: 0;
-    }
-  }
