@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <style>
+            /*
+            The flex: 1 property on each .box ensures that they have equal width and wrap to the next line when the screen size decreases.
+The media query rearranges the order of the divs for smaller screens, further customizing the wrapping behavior.*/
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+          }
+          
+          .box {
+            width: 25%;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 100px;
+          }
+          
+          /* Default order */
+          .one { order: 1; }
+          .two { order: 2; }
+          .three { order: 3; }
+          .four { order: 4; }
+          
+          /* Media query for smaller screens */
+          @media (max-width: 768px) {
+           
+            .one { order: 3; }
+            .two { order: 1; }
+            .three { order: 4; }
+            .four { order: 2; }
+          }
+        </style>
+    </head>
+    <body>
+<div class="container">
+  <div class="box one">1</div>
+  <div class="box two">2</div>
+  <div class="box three">3</div>
+  <div class="box four">4</div>
+</div>
+</body>
+</html>

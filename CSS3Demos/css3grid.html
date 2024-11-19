@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <style>
+/*
+Grid Container: The .grid-container is defined as a grid container using display: grid.
+Grid Template Columns: The grid-template-columns property defines the number and width of columns in the grid.
+Grid Item Placement: The grid-column and grid-row properties are used to position grid items within the grid.
+Media Query: The media query targets smaller screens and redefines the grid-template-columns property to create a two-column layout. It also adjusts the grid-column and grid-row properties to rearrange the grid items.
+
+The fr unit, short for "fraction," is a flexible unit used in CSS Grid Layout to define the relative size of grid tracks (columns or rows). It allows you to create dynamic and responsive grid layouts that adapt to different screen sizes.
+
+How it works:
+
+Dividing Available Space: When you use fr units, the available space in the grid container is divided into equal parts based on the specified fr values.
+Proportional Sizing: The more fr units assigned to a track, the larger its proportion of the available space.
+*/
+            
+
+        .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Create 4 equal-width columns */
+        gap: 10px; /* Add spacing between grid items */
+      }
+      
+      /* Default order */
+      .one { grid-column: 1; }
+      .two { grid-column: 2; }
+      .three { grid-column: 3; }
+      .four { grid-column: 4; }
+      
+      /* Media query for smaller screens */
+      @media (max-width: 768px) {
+        .grid-container {
+          grid-template-columns: 1fr 1fr; /* Create 2 equal-width columns */
+        }
+      
+        .one { grid-column: 1; grid-row: 1; }
+        .two { grid-column: 2; grid-row: 1; }
+        .three { grid-column: 1; grid-row: 2; }
+        .four { grid-column: 2; grid-row: 2; }
+      }
+
+    </style>
+    </head>
+    <body>
+<div class="grid-container">
+  <div class="grid-item one">1</div>
+  <div class="grid-item two">2</div>
+  <div class="grid-item three">3</div>
+  <div class="grid-item four">4</div>
+</div>
+</body>
+</html>
