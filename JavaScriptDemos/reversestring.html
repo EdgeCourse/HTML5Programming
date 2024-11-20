@@ -1,23 +1,11 @@
 <script>
-    const numbers = [10, 25, 5, 30, 15];
-
-    // Find the largest number
-    let largest = numbers[0];
-    for (let i = 1; i < numbers.length; i++) {
-        if (numbers[i] > largest) {
-            largest = numbers[i];
+    function reverseString(str) {
+        let reversed = "";
+        for (let i = str.length - 1; i >= 0; i--) {
+            reversed += str[i];
         }
+        return reversed;
     }
-    console.log("Largest number:", largest);
     
-    // Calculate the sum
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
-    }
-    console.log("Sum of numbers:", sum);
-    
-    // Calculate the average
-    let average = sum / numbers.length;
-    console.log("Average of numbers:", average);
+    console.log(reverseString("hello")); // Output: olleh
 </script>

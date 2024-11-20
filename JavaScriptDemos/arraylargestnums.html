@@ -1,16 +1,24 @@
+
 <script>
-    let randomNumber = Math.floor(Math.random() * 100) + 1;
-let guess;
+const numbers = [10, 25, 5, 30, 15];
 
-while (guess !== randomNumber) {
-  guess = parseInt(prompt("Guess a number between 1 and 100:"));
-
-  if (guess < randomNumber) {
-    console.log("Too low. Try again.");
-  } else if (guess > randomNumber) {
-    console.log("Too high. Try again.");
-  } else {
-    console.log("Congratulations! You guessed correctly.");
-  }
+// Find the largest number
+let largest = numbers[0];
+for (let i = 1; i < numbers.length; i++) {
+    if (numbers[i] > largest) {
+        largest = numbers[i];
+    }
 }
+console.log("Largest number:", largest);
+
+// Calculate the sum
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+}
+console.log("Sum of numbers:", sum);
+
+// Calculate the average
+let average = sum / numbers.length;
+console.log("Average of numbers:", average);
 </script>
