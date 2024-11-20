@@ -1,0 +1,33 @@
+<script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+let guess;
+
+while (guess !== randomNumber) {
+  guess = parseInt(prompt("Guess a number between 1 and 100:"));
+
+  if (guess < randomNumber) {
+    console.log("Too low. Try again.");
+  } else if (guess > randomNumber) {
+    console.log("Too high. Try again.");
+  } else {
+    console.log("Congratulations! You guessed correctly.");
+  }
+}
+
+//do while
+/*
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let guess;
+
+do {
+  guess = parseInt(prompt("Guess a number between 1 and 100:"));
+
+  if (guess === randomNumber) {
+    console.log("Congratulations! You guessed correctly.");
+  } else {
+    console.log("Incorrect guess. Try again.");
+    break; // Exit the loop if the guess is wrong
+  }
+} while (true); // The loop will continue indefinitely until the `break` statement is executed
+*/
+</script>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web Overview</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <nav class="navigation">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <main>
+
+       
+  
+      <aside>
+        <canvas id="myChart" width="350" height="225"></canvas>
+        
+<div id="tooltip" style="display: none; position: absolute; 
+background-color: rgba(25, 25, 112, 0.5); 
+color: white; padding: 10px; border-radius: 10px;">
+</div>
+ 
+<script>
+    const canvas = document.getElementById('myChart');
+const ctx = canvas.getContext('2d');
+// Framework data (you can customize this)
+const frameworks = [
+{ name: 'React', usage: 200 },
+{ name: 'Angular', usage: 140 },
+{ name: 'Vue', usage: 100 },
+{ name: 'Svelte', usage: 70 }
+];
+// Chart dimensions
+const barWidth = 60;
+const barSpacing = 10;
+const chartHeight = 200;
+// Draw the bars
+frameworks.forEach((framework, index) => {
+const x = index * (barWidth + barSpacing);
+const y = chartHeight - framework.usage;
+const height = framework.usage;
+// Random color for each bar
+const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+ctx.fillStyle = color;
+ctx.fillRect(x, y, barWidth, height);
+//add heading title
+ctx.font = '16px Arial';
+ctx.strokeStyle = 'black';
+ctx.textAlign = 'center';
+ctx.strokeText('JavaScript Framework Popularity', canvas.width / 1.75, 20);
+// Add labels
+ctx.fillStyle = 'black';
+ctx.font = '12px Arial';
+ctx.fillText(framework.name, x + barWidth / 2 - ctx.measureText(framework.name).width / 2, chartHeight + 15);
+});
+
+canvas.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+  
+    let hoveredBar = null;
+  
+    frameworks.forEach((item, index) => {
+      const barX = index * (barWidth + barSpacing);
+      const barY = chartHeight - item.usage;
+      const barHeight = item.usage;
+  
+      if (x >= barX && x <= barX + barWidth && y >= barY && y <= barY + barHeight) {
+        hoveredBar = item; // Store information about hovered bar
+      }
+    });
+  
+    // Update tooltip content or create a new element
+    const tooltipElement = document.getElementById('tooltip'); // Add a <div> with id="tooltip"
+  
+    if (hoveredBar) {
+      tooltipElement.textContent = `Framework: ${hoveredBar.name} - Usage: ${hoveredBar.usage}`;
+      tooltipElement.style.display = 'block';
+      tooltipElement.style.left = `${x + 500}px`; // Position tooltip near the hovered bar
+      tooltipElement.style.top = `${y + 200}px`;
+    } else {
+      tooltipElement.style.display = 'none';
+    }
+  });
+</script>
+    </aside>
+
+        <section>
+            <h2>whAt IS html5?</h2>
+            <div><script src="js/deadline.js"></script></div>
+            <article>
+                <p>HTML5 is the latest version of HTML, the standard language for creating web pages and web applications. It's designed to be more flexible and powerful than previous versions, with a focus on semantic markup and multimedia capabilities.</p>
+            </article>
+        </section>
+
+        <section>
+            <h2>Other Web Technologies</h2>
+            <article>
+                <h3>CSS3</h3>
+                <p>CSS3 is the latest version of Cascading Style Sheets, a language for styling HTML and XML (Extensible Markup Language) documents. It offers a wide range of features for creating visually appealing and interactive web pages.</p>
+            </article>
+            <article>
+                <h3>JavaScript</h3>
+                <p>JavaScript is a programming language that adds interactivity to web pages. It can be used to create dynamic effects, validate forms, and much more.</p>
+                <p>Fun Fact: <script src="js/random.js"></script></p>
+              </article>
+        </section>
+
+        <section>
+            <article>
+            <h3>Related Content</h3>
+            <ul>
+                <li><a href="locations.html">Conference Locations</a></li>
+                <li><a href="cart.html">Shop</a></li>
+            </ul>
+            </article>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+
+    <script src="js/capitalize.js"></script>
+</body>
+</html>
