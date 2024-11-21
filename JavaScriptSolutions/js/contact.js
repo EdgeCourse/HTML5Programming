@@ -1,3 +1,52 @@
+/*
+const inputs = document.querySelectorAll("input");
+
+inputs.forEach(input => {
+  let errorMessage = null;
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === "ArrowRight") {
+      this.blur();
+    }
+  });
+
+  ["cut", "copy", "paste"].forEach(eventType => {
+    input.addEventListener(eventType, (event) => {
+      event.preventDefault();
+      if (errorMessage) {
+        errorMessage.remove();
+      }
+      errorMessage = showError(event.target, event.type);
+    });
+  });
+
+  input.addEventListener("input", () => {
+    if (errorMessage) {
+      errorMessage.remove();
+      errorMessage = null;
+    }
+  });
+});
+
+function showError(input, eventType) {
+  const errorMessage = document.createElement('div');
+  errorMessage.textContent = `${eventType} is disabled in this field`;
+  errorMessage.classList.add('error-message');
+
+  input.parentNode.insertBefore(errorMessage, input.nextSibling);
+
+  errorMessage.style.display = 'block';
+  errorMessage.style.height = '0';
+  errorMessage.style.color = 'red';
+  errorMessage.style.transition = 'height 0.3s ease';
+
+  setTimeout(() => {
+    errorMessage.style.height = errorMessage.scrollHeight + 'px'; 
+  }, 0);
+
+  return errorMessage;
+}
+*/
 const inputs = document.querySelectorAll("input");
 
 inputs.forEach(input => {
@@ -46,6 +95,35 @@ function showError(input, eventType) {
   return errorMessage;
 }
 
+// Add event listener to the form
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent default form submission 1 
+
+  // Collect form data
+  const formData = {};
+  inputs.forEach(input => {
+    formData[input.id] = input.value;
+  });
+
+  // Save form data to local storage
+  localStorage.setItem('formData', JSON.stringify(formData));
+
+  // Optionally, submit the form to a server or perform other actions
+  console.log('Form data:', formData);
+  // ...
+});
+
+// Load saved form data on page load
+window.onload = () => {
+  const savedData = localStorage.getItem('formData');
+  if (savedData) {
+    const formData = JSON.parse(savedData);
+    inputs.forEach(input => {
+      input.value = formData[input.id];
+    });
+  }
+};
 //es5
 
 /* 

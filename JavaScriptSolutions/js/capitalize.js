@@ -35,6 +35,7 @@ The ES5 version shows how to set a default value for the lowercaseArticles argum
 
 function capitalize(sentence, lowercaseArticles = true) {
  
+
 	const words = sentence.toLowerCase().split(" ");
   
 	const articles = ["the", "is", "a", "an", "and", "but", "or", "for", "nor", "so", "yet", "as", "at", "by", "for", "in", "of", "off", "on", "per", "to", "up", "via"]; 
