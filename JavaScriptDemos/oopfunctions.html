@@ -1,0 +1,48 @@
+<script>
+    // Function to create a Product object
+    function createProduct(name, price) {
+      return { name, price };
+    }
+    
+    // Function to create a CartItem object
+    function createCartItem(name, price, quantity) {
+      const product = createProduct(name, price);
+      return Object.assign({}, product, { quantity });
+    }
+    
+    // Shopping cart functions
+    const cart = {
+      items: [],
+    
+      addItem(product, quantity) {
+        const itemIndex = this.items.findIndex(item => item.name === product.name);
+        if (itemIndex !== -1) {
+          this.items[itemIndex].quantity += quantity;
+        } else {
+          this.items.push(createCartItem(product.name, product.price, quantity));
+        }
+      },
+    
+      removeItem(product) {
+        const itemIndex = this.items.findIndex(item => item.name === product.name);
+        if (itemIndex !== -1) {
+          this.items.splice(itemIndex, 1);
+        }
+      },
+    
+      getTotalPrice() {
+        return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
+      },
+    };
+    
+    // Usage example
+    const product1 = createProduct('Laptop', 999);
+    const product2 = createProduct('Phone', 799);
+    
+    cart.addItem(product1, 2);
+    cart.addItem(product2, 1);
+    cart.removeItem(product1); // Remove one laptop
+    
+    const totalPrice = cart.getTotalPrice();
+    console.log('Total Price:', totalPrice);
+    </script>

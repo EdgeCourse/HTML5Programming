@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    /* Basic styling for the chart */
+    svg {
+      font-family: sans-serif;
+    }
+
+    .bar {
+      fill: steelblue;
+    }
+
+    .bar:hover {
+      fill: darkblue;
+    }
+
+    .axis-label {
+      font-size: 12px;
+    }
+
+    /* Tooltip styles */
+    .tooltip {
+      position: absolute;
+      background-color: white;
+      border: 1px solid black;
+      padding: 5px;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <svg width="960" height="500"></svg>
+
+  <div class="tooltip"></div>
+
+  <script>
+    // Sample data
+    const data = [
+      { category: "A", value: 20 },
+      { category: "B", value: 35 },
+      { category: "C", value: 15 }
+    ];
+
+    // Set up the SVG container
+    const svg = d3.select("svg");
+
+    // Create scales for x and y axes
+    const xScale = d3.scaleBand()
+      .domain(data.map(d => d.category))
+      .range([50, 800])
+      .padding(0.1);
+
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.value)])
+      .range([450, 50]);
+
+    // Create and add the bars to the SVG
+    const bars = svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", d => xScale(d.category))
+      .attr("y", d => yScale(d.value))
+      .attr("width", xScale.bandwidth())
+      .attr("height", d => 450 - yScale(d.value));
+
+    // Tooltip element and functionality
+    const tooltip = d3.select(".tooltip");
+
+    bars.on("mouseover", function(event, d) {
+      tooltip.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+      tooltip.html("Category: " + d.category + "<br/>Value: " + d.value)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 10) + "px");
+    })
+    .on("mouseout", function() {
+      tooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+    });
+
+    // Click event functionality
+    bars.on("click", function(event, d) {
+      console.log("Clicked on:", d); // Replace with your desired action
+    });
+
+    // Zooming functionality
+    const zoom = d3.zoom()
+      .scaleExtent([1, 10])
+      .on("zoom", zoomed);
+
+    svg.call(zoom);
+
+    function zoomed(event) {
+      bars.attr("transform", event.transform);
+      // Update axis and other elements accordingly (optional)
+    }
+
+    // Add x-axis
+    svg.append("g")
+      .attr("transform", "translate(0, 450)")
+      .call(d3.axisBottom(xScale))
+      .selectAll("text")
+      .attr("class", "axis-label");
+
+    // Add y-axis
+    svg.append("g")
+      .call(d3.axisLeft(yScale))
+      .attr("transform", "translate(50, 0)")
+      .selectAll("text")
+      .attr("class", "axis-label");
+  </script>
+</body>
+</html>
