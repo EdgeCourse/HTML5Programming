@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Attributes Demo</title>
+</head>
+<body>
+    <div id="product-card" 
+         data-product-name="Awesome Gadget" 
+         data-product-price="99.99" 
+         data-product-color="blue">
+        </div>
+
+    <script>
+        // Get a reference to the product card element
+const productCard = document.getElementById("product-card");
+
+// Access the data attributes using the dataset property
+const productName = productCard.dataset.productName;
+const productPrice = productCard.dataset.productPrice;
+const productColor = productCard.dataset.productColor;
+
+// Display the product information
+productCard.innerHTML = `
+    <h2>${productName}</h2>
+    <p>Price: $${productPrice}</p>
+    <p>Color: ${productColor}</p>
+`;
+    </script>
+</body>
+</html>
