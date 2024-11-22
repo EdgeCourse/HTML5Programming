@@ -1,0 +1,98 @@
+<script>
+/*
+functions 
+arrow functions 
+(ES6) Destructuring assignment. If you see: const [myvar] = arr;, that is destructuring assignment https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+(ES6) Rest/spread 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+Template string 
+Objects and arrays 
+HTML5: semantic elements: elements instead of all divs, for example: nav, article, header, footer, main, aside, section 
+other elements: <ul><li>bullet</li></ul>
+DOM, Document Object Model: 
+let elem = document.getElementById(content) 
+document.querySelector("#content")
+Events: 
+elem.addEventListener("click", callback)
+
+make sure page is loaded first:
+document.addEventListener('DOMContentLoaded', () => {
+  // Your JavaScript code here
+  console.log("DOM fully loaded and parsed");
+});
+
+(Optional): Canvas
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+CSS3: media queries 
+@media only screen and (max-width: 768){
+    body{
+        font-size: 1rem;
+    }    
+}
+selectors:
+h1, h2{
+    font-weight: 400;
+}
+
+section:hover{
+    background: yellow;
+}
+
+nav ul li a{
+    color: navy;
+}
+
+css3:
+animation like we did in the contact form button
+https://www.w3schools.com/css/css3_animations.asp
+
+box model: box-shadow, border 
+https://www.w3schools.com/css/css_boxmodel.asp
+transition 
+https://www.w3schools.com/css/css3_transitions.asp
+
+*/
+
+//functions
+function greet(name){
+    return "Hello" + name + "!";
+}
+
+greet("Bob")
+
+//anonymous function
+const greet = function (name){
+    return "Hello" + name + "!";
+}
+
+greet("Bob")
+
+//es6
+const greet = (name) => `Hello ${name} !`
+
+function callbackfunction(){
+    //does something 
+}
+
+myobj.myMethod(callbackfunction)
+
+//or:
+//put anonymous function inside directly
+myobj.myMethod((name) => `Hello ${name} !`)
+
+var obj = {name: "Bob", topic: "JS"}
+
+var arr = ["JS", "ES6", "HTML5"]
+
+var data = [
+    {name: "Bob", topic: "JS"},
+    {name: "Jane", topic: "ES6"}
+]
+//JSON
+[
+    {"name": "Bob", "topic": "JS"},
+    {"name": "Jane", "topic": "ES6"}
+]
+
+</script>

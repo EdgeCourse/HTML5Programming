@@ -1,0 +1,78 @@
+[
+    {
+        question: "What is HTML?",
+        choices: ["A programming language", "A markup language", "A scripting language", "A styling language"],
+        answer: "YOUR ANSWER HERE" "YOUR ANSWER HERE"
+    },
+    {
+        question: "What is CSS?",
+        choices: ["A programming language", "A markup language", "A scripting language", "A styling language"],
+        answer: "YOUR ANSWER HERE" 
+    },
+    {
+        question: "What is JavaScript?",
+        choices: ["A programming language", "A markup language", "A styling language", "A database language"],
+        answer: "YOUR ANSWER HERE" 
+    },
+    {
+        question: "What is the DOM?",
+        choices: ["A programming language", "A document type declaration", "A model of the HTML document", "A styling language"],
+        answer: "YOUR ANSWER HERE" 
+    },
+    {
+        question: "What is the purpose of the `<header>` tag?",
+        choices: ["To define a header for a document or section", "To define a main content area", "To define a footer for a document or section", "To define a navigation section"],
+        answer: "YOUR ANSWER HERE" 
+    },
+    {
+        question: "What is the difference between inline and block elements?",
+        choices: ["Inline elements take up as much width as necessary, while block elements take up the full width of their container.", "Block elements take up as much width as necessary, while inline elements take up the full width of their container.", "Inline elements are always displayed on a new line, while block elements are always displayed inline.", "Block elements are always displayed on a new line, while inline elements are always displayed inline."],
+        answer: "YOUR ANSWER HERE" 
+          },
+    {
+        question: "What is the CSS Box Model?",
+        choices: ["A model for structuring web pages", "A model for styling text", "A model for creating animations", "A model for handling user input"],
+        answer: "YOUR ANSWER HERE" 
+    },
+    {
+        question: "What is the difference between `==` and `===` operators in JavaScript?",
+        choices: ["`==` checks for equality, while `===` checks for strict equality, including data type.", "`===` checks for equality, while `==` checks for strict equality, including data type.", "Both operators check for strict equality, but `===` is more efficient.", "Both operators check for equality, but `==` is more efficient."],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "Explain the concept of hoisting in JavaScript.",
+        choices: ["Hoisting is the process of moving variable and function declarations to the top of their scope.", "Hoisting is the process of moving variable and function declarations to the bottom of their scope.", "Hoisting is the process of creating a copy of a variable or function.", "Hoisting is the process of deleting a variable or function."],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "What is the difference between `let`, `const`, and `var` keywords?",
+        choices: ["`let` and `const` are block-scoped, while `var` is function-scoped.", "`let` and `var` are block-scoped, while `const` is function-scoped.", "`const` and `var` are block-scoped, while `let` is function-scoped.", "All three keywords are block-scoped."],
+        answer: "YOUR ANSWER HERE" 
+            },
+    {
+        question: "What is the DOM?",
+        choices: ["A programming language", "A document type declaration", "A model of the HTML document", "A styling language"],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "What is the purpose of the `async` and `await` keywords in JavaScript?",
+        choices: ["To declare asynchronous functions", "To create synchronous functions", "To handle errors in JavaScript", "To define variables"],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "What is a callback function?",
+        choices: ["A function that is passed as an argument to another function", "A function that is called automatically by the browser", "A function that is used to define classes", "A function that is used to create objects"],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "What is the difference between `null` and `undefined` in JavaScript?",
+        choices: ["Null is a value, while undefined is a type.", "Undefined is a value, while null is a type.", "Both are values, but null represents an empty value, while undefined represents a variable that has not been assigned a value.", "Both are types, but null represents an empty value, while undefined represents a variable that has not been assigned a value."],
+        answer: "YOUR ANSWER HERE" 
+           },
+    {
+        question: "What is the purpose of the `this` keyword in JavaScript?",
+        choices: ["To refer to the current object", "To declare a variable", "To define a function", "To create an array"],
+        answer: "YOUR ANSWER HERE" 
+      
+    }
+];
