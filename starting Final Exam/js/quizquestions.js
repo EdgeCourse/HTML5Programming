@@ -132,4 +132,4 @@ const guessHandler = (id, guess) => {
 Call displayNext with currentQuizState
 */
 // Initializing the quiz
-displayNext(currentQuizState);
+
