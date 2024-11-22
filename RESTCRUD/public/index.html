@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo App</title>
+  <link rel="stylesheet" href="style.css">  
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1;
+  }
+  
+  form button {
+    padding: 10px 20px;
+    background-color:navy;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #todoList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #todoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #todoList li button {
+    padding: 5px 10px;
+    background-color: orange; /* Red color for delete button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
+
+</head>
+<body>
+  <h1>What We Learned</h1>
+  <form id="todoForm">
+    <input type="text" id="todoText" placeholder="Enter todo">
+    <button type="submit">Add Todo</button>
+  </form>
+  <ul id="todoList"></ul>
+
+  <script>
+    const form = document.getElementById('todoForm');
+    const todoText = document.getElementById('todoText');
+    const todoList = document.getElementById('todoList');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = todoText.value;
+      const response = await fetch('/todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text })
+      });
+      const data = await response.json();
+      todoList.innerHTML += `<li>${data.text} <button onclick="deleteTodo(${data.id})">Delete</button> <button onclick="editTodo(${data.id})">Edit</button></li>`;
+      todoText.value = '';
+    });
+
+    async function fetchTodos() {
+      const response = await fetch('/todos');
+      const todos = await response.json();
+      todoList.innerHTML = '';
+      todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.textContent = todo.text;
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => deleteTodo(todo.id));
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', () => editTodo(todo.id));
+        li.appendChild(deleteButton);
+        li.appendChild(editButton);
+        todoList.appendChild(li);
+      });
+    }
+
+    async function deleteTodo(id) {
+      await fetch(`/todos/${id}`, { method: 'DELETE' });
+      fetchTodos();
+    }
+
+    async function editTodo(id) {
+      const newText = prompt('Enter new text for the todo');
+      await fetch(`/todos/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: newText })
+      });
+      fetchTodos();
+    }
+
+    fetchTodos();
+  </script>
+</body>
+</html>
